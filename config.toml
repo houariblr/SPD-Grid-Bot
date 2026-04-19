@@ -1,0 +1,44 @@
+# ═══════════════════════════════════════════════════════════
+#  SPD SOFTWARE LAB — config.toml  v3.0 PRODUCTION
+#  Secrets go in .env — NOT here
+# ═══════════════════════════════════════════════════════════
+
+# ── Mode: "live" | "paper" | "backtest" ────────────────────
+mode = "paper"   # Change to "live" for real trading
+
+# ── Trading pair ────────────────────────────────────────────
+symbol        = "BNBUSDT"
+total_capital = 20.0    # USDT
+
+# ── Grid settings ───────────────────────────────────────────
+grid_levels            = 8
+grid_rebuild_ticks     = 240
+atr_rebuild_threshold_pct = 15.0
+
+# ── Risk management ─────────────────────────────────────────
+max_loss_pct         = 5.0     # Stop Loss
+max_drawdown_pct     = 8.0     # Pause threshold (Safety = 12%)
+profit_target_pct    = 1.0     # Take Profit (optimized by [O1])
+max_single_trade_pct = 0.09    # 9% per trade
+min_notional_usdt    = 5.5     # Binance minimum
+
+# ── Execution ───────────────────────────────────────────────
+slippage_pct     = 0.0005
+atr_outlier_cap_pct = 5.0
+
+# ── Network ─────────────────────────────────────────────────
+rate_limit_per_sec = 10
+max_retries        = 5
+retry_base_sec     = 2
+latency_buf_size   = 100
+max_trade_history  = 10000
+
+# ── Logging ─────────────────────────────────────────────────
+heartbeat_secs = 30
+status_secs    = 60
+
+# ── Copy-Trade Server ───────────────────────────────────────
+copy_trade_enabled = true
+copy_trade_port    = 8080
+fee_pct            = 10.0    # 10% of follower profit → master
+master_id          = "SPD-MASTER-001"
